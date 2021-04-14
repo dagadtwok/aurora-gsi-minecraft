@@ -12,6 +12,10 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.options.KeyBinding;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.source.BiomeAccess;
+import net.minecraft.world.biome.source.BiomeAccessType;
 
 /** Container for the Provider data and Player data. */
 public class GSINode {
@@ -139,13 +143,28 @@ public class GSINode {
         private int dimensionID;
 
         private void update() {
+            PlayerEntity player = MinecraftClient.getInstance().player;
             try {
                 ClientWorld world = MinecraftClient.getInstance().world;
                 worldTime = world.getTimeOfDay();
                 isDayTime = world.isDay();
                 rainStrength = world.getRainGradient(1);
                 isRaining = world.isRaining();
-                dimensionID = 0;
+
+                switch (world.getRegistryManager().getDimensionTypes().getRawId(world.getDimension())){
+                    case 0:
+                        dimensionID = 0;
+                        break;
+                    case 2:
+                        dimensionID = -1;
+                        isRaining = false;
+                        break;
+                    case 3:
+                        dimensionID= 1;
+                        isRaining = false;
+                        break;
+                }
+
             } catch (Exception ignore) {
             }
         }
