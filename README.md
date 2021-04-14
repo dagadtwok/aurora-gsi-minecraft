@@ -9,6 +9,7 @@ Aurora GSI is also a client-side only mod - this means you can use it even when 
 [![Aurora on GitHub](public/aurora_button.png)](https://github.com/antonpup/Aurora)
 [![Get Fabric](public/fabric_button.png)](https://fabricmc.net/use/)
 [![Mod Releases](public/download_button.png)](https://gitlab.com/aurora-gsi-minecraft/mc1.15-fabric/tags)
+[![Original Repo](public/repo_button.png)](https://gitlab.com/aurora-gsi-minecraft/mc1.15-fabric/)
 
 ## Installation
 
