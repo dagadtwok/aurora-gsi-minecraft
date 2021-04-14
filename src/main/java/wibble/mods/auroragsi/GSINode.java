@@ -145,7 +145,7 @@ public class GSINode {
                 isDayTime = world.isDay();
                 rainStrength = world.getRainGradient(1);
                 isRaining = world.isRaining();
-                dimensionID = world.getDimension().DimensionType;
+                dimensionID = 0;
             } catch (Exception ignore) {
             }
         }
@@ -169,9 +169,9 @@ public class GSINode {
                     KeyBinding[] temp = client.options.keysAll;
                     List<AuroraKeyBinding> tempList = new ArrayList<>();
                     for (KeyBinding key : temp) {
-                        if (false) {
+                        if (!key.getTranslationKey().contains("unknown") && key.getTranslationKey().contains("keyboard")) {
                             String context = key.getCategory() == "key.categories.inventory" ? "GUI" : "UNIVERSAL";
-                            //tempList.add(new AuroraKeyBinding(AuroraKeyBinding.ToAuroraKeyCode(key.getName()), null, context));
+                            tempList.add(new AuroraKeyBinding(AuroraKeyBinding.ToAuroraKeyCode(key.getTranslationKey()), null, context));
                         }
                     }
                     keys = new AuroraKeyBinding[tempList.size()];
